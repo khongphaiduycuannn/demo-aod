@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoAOD"
         tools:targetApi="34">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,8 +30,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".AodActivity"
+            android:exported="true" />
+
         <service
-            android:name=".ScreenTrackingService"
+            android:name=".AodService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />

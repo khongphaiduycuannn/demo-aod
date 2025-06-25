@@ -14,7 +14,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 
-class ScreenTrackingService : Service() {
+class AodService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -29,14 +29,15 @@ class ScreenTrackingService : Service() {
                 Intent.ACTION_SCREEN_ON -> {
                     Log.d("thuongngok", "screen on")
                     try {
-                        val activityIntent = Intent(this@ScreenTrackingService, MainActivity::class.java).apply {
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or
-                                    Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                                    Intent.FLAG_ACTIVITY_SINGLE_TOP or
-                                    Intent.FLAG_ACTIVITY_NO_ANIMATION
-                            putExtra("SHOW_ON_LOCK_SCREEN", true)
-                        }
+                        val activityIntent =
+                            Intent(this@AodService, AodActivity::class.java).apply {
+                                flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                                        Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                                        Intent.FLAG_ACTIVITY_SINGLE_TOP or
+                                        Intent.FLAG_ACTIVITY_NO_ANIMATION
+                                putExtra("SHOW_ON_LOCK_SCREEN", true)
+                            }
                         startActivity(activityIntent)
                     } catch (ex: Exception) {
                         Log.e("thuongngok", "ex: ${ex.message}")
@@ -57,7 +58,7 @@ class ScreenTrackingService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         notificationManager?.let {
             createNotificationChannel(this, it)
-            val notificationBuilder = NotificationCompat.Builder(this, "SCREEN_TRACKING_SERVICE_1")
+            val notificationBuilder = NotificationCompat.Builder(this, "SCREEN_TRACKING_SERVICE")
             val notification = notificationBuilder
                 .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
@@ -84,7 +85,7 @@ class ScreenTrackingService : Service() {
         val intentFilter = IntentFilter().apply {
             addAction(Intent.ACTION_SCREEN_ON)
             addAction(Intent.ACTION_SCREEN_OFF)
-            addAction(Intent.ACTION_USER_PRESENT) // Thêm để detect khi user unlock
+            addAction(Intent.ACTION_USER_PRESENT)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(receiver, intentFilter, RECEIVER_NOT_EXPORTED)
@@ -107,7 +108,7 @@ class ScreenTrackingService : Service() {
             val descriptionText = context.getString(R.string.app_name)
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(
-                "SCREEN_TRACKING_SERVICE_1",
+                "SCREEN_TRACKING_SERVICE",
                 name,
                 importance
             ).apply {
