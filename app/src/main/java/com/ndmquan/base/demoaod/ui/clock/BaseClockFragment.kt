@@ -1,20 +1,26 @@
-package com.ndmquan.base.demoaod.clock
+package com.ndmquan.base.demoaod.ui.clock
 
+import android.annotation.SuppressLint
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ndmquan.base.demoaod.R
+import com.ndmquan.base.demoaod.custom.view.ScalableClockLayout
+import com.ndmquan.base.demoaod.ui.clock.adapter.NotificationAdapter
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
@@ -23,19 +29,17 @@ open class BaseClockFragment : Fragment() {
     protected open val layoutId: Int = R.layout.fragment_base_clock
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(layoutId, container, false)
-    }
-
-
     // Text characters
     protected val tvHourFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvHourFirstChar) }
     protected val tvHourSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvHourSecondChar) }
     protected val tvMinuteFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvMinuteFirstChar) }
     protected val tvMinuteSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvMinuteSecondChar) }
+
+    // Image characters
+    protected val ivHourFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivHourFirstChar) }
+    protected val ivHourSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivHourSecondChar) }
+    protected val ivMinuteFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivMinuteFirstChar) }
+    protected val ivMinuteSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivMinuteSecondChar) }
 
     // Date and time
     protected val tvDayWeek by lazy { tryToFindViewById<TextView>(R.id.tvDayWeek) }
@@ -47,6 +51,15 @@ open class BaseClockFragment : Fragment() {
     // Background
     protected val ivBackground by lazy { tryToFindViewById<ImageView>(R.id.ivBackground) }
 
+    // Notification recycler view
+    protected val rvNotifications by lazy { tryToFindViewById<RecyclerView>(R.id.rvNotifications) }
+    protected val notificationsAdapter by lazy { NotificationAdapter() }
+
+
+    private lateinit var gestureDetector: GestureDetector
+    private val minSwipeDistance = 150
+    private val swipeThreshold = 100
+
 
     protected open val charList = mutableListOf<Any>().apply {
         addAll(DEFAULT_CHAR_LIST)
@@ -55,6 +68,13 @@ open class BaseClockFragment : Fragment() {
     private var showBattery = true
     private var showDate = true
 
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(layoutId, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val date = Date()
@@ -65,9 +85,14 @@ open class BaseClockFragment : Fragment() {
         tvDayWeek?.visibility = if (showDate) View.VISIBLE else View.GONE
         tvDateTime?.visibility = if (showDate) View.VISIBLE else View.GONE
 
-        ivBackground?.setOnClickListener {
-            activity?.finish()
-        }
+        tvBattery?.let { (view as? ScalableClockLayout)?.disableScaleView(it) }
+        tvDayWeek?.let { (view as? ScalableClockLayout)?.disableScaleView(it) }
+        tvDateTime?.let { (view as? ScalableClockLayout)?.disableScaleView(it) }
+        ivBackground?.let { (view as? ScalableClockLayout)?.disableScaleView(it) }
+
+        rvNotifications?.adapter = notificationsAdapter
+
+        setupGestureDetection()
     }
 
 
@@ -146,25 +171,25 @@ open class BaseClockFragment : Fragment() {
         if (isTextChar(hourFirst)) {
             tvHourFirstChar?.text = (hourFirst as Char).toString()
         } else {
-            tvHourFirstChar?.background = hourFirst as Drawable
+            ivHourFirstChar?.setImageResource(hourFirst as Int)
         }
 
         if (isTextChar(hourSecond)) {
             tvHourSecondChar?.text = (hourSecond as Char).toString()
         } else {
-            tvHourSecondChar?.background = hourSecond as Drawable
+            ivHourSecondChar?.setImageResource(hourSecond as Int)
         }
 
         if (isTextChar(minuteFirst)) {
             tvMinuteFirstChar?.text = (minuteFirst as Char).toString()
         } else {
-            tvMinuteFirstChar?.background = minuteFirst as Drawable
+            ivMinuteFirstChar?.setImageResource(minuteFirst as Int)
         }
 
         if (isTextChar(minuteSecond)) {
             tvMinuteSecondChar?.text = (minuteSecond as Char).toString()
         } else {
-            tvMinuteSecondChar?.background = minuteSecond as Drawable
+            ivMinuteSecondChar?.setImageResource(minuteSecond as Int)
         }
     }
 
@@ -210,6 +235,48 @@ open class BaseClockFragment : Fragment() {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupGestureDetection() {
+        gestureDetector =
+            GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+
+                override fun onDoubleTap(e: MotionEvent): Boolean {
+                    activity?.finish()
+                    return true
+                }
+
+                override fun onFling(
+                    e1: MotionEvent?,
+                    e2: MotionEvent,
+                    velocityX: Float,
+                    velocityY: Float
+                ): Boolean {
+                    if (e1 == null) return false
+
+                    val diffX = e2.x - e1.x
+                    val diffY = e2.y - e1.y
+
+                    if (abs(diffY) > abs(diffX)) {
+                        if (diffY < -minSwipeDistance &&
+                            abs(velocityY) > swipeThreshold &&
+                            e1.y > (view?.height ?: 0) * 0.6f
+                        ) {
+                            activity?.finish()
+                            return true
+                        }
+                    }
+                    return false
+                }
+            })
+
+        val touchView = ivBackground ?: view
+        touchView?.setOnTouchListener { _, event ->
+            gestureDetector.onTouchEvent(event)
+            true
+        }
+    }
+
+
     protected open fun onBatteryChanged(batteryPercent: Int) {
         val percent = "$batteryPercent%"
         tvBattery?.text = percent
@@ -230,7 +297,7 @@ open class BaseClockFragment : Fragment() {
         const val DEFAULT_TEXT_COLOR = Color.WHITE
 
 
-        const val MAX_SCALE = 1.3f
+        const val MAX_SCALE = 5f
 
         const val MIN_SCALE = 0.5f
 

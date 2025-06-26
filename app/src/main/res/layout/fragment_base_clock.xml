@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ndmquan.base.demoaod.clock.ScalableClockLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ndmquan.base.demoaod.custom.view.ScalableClockLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".clock.BaseClockFragment">
+    tools:context=".ui.clock.BaseClockFragment">
 
     <ImageView
         android:id="@+id/ivBackground"
@@ -109,6 +109,66 @@
         tools:text="25 Tháng 6" />
 
 
+    <ImageView
+        android:id="@+id/ivHourFirstChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        tools:src="@drawable/ic_view_clock_3d_0" />
+
+    <ImageView
+        android:id="@+id/ivHourSecondChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivHourFirstChar"
+        app:layout_constraintStart_toEndOf="@+id/ivHourFirstChar"
+        app:layout_constraintTop_toTopOf="@+id/ivHourFirstChar"
+        tools:src="@drawable/ic_view_clock_3d_2" />
+
+    <ImageView
+        android:id="@+id/ivMinuteFirstChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="@+id/ivHourFirstChar"
+        app:layout_constraintTop_toBottomOf="@+id/ivHourFirstChar"
+        tools:src="@drawable/ic_view_clock_3d_2" />
+
+    <ImageView
+        android:id="@+id/ivMinuteSecondChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMinuteFirstChar"
+        app:layout_constraintStart_toStartOf="@+id/ivHourSecondChar"
+        app:layout_constraintTop_toTopOf="@+id/ivMinuteFirstChar"
+        tools:src="@drawable/ic_view_clock_3d_8" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_18sdp"
+        android:layout_marginVertical="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@+id/tvBattery"
+        app:layout_constraintTop_toBottomOf="@+id/ivMinuteSecondChar"
+        tools:listitem="@layout/item_notification" />
+
+
     <TextView
         android:id="@+id/tvBattery"
         android:layout_width="wrap_content"
@@ -120,4 +180,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="41%" />
-</com.ndmquan.base.demoaod.clock.ScalableClockLayout>
+</com.ndmquan.base.demoaod.custom.view.ScalableClockLayout>

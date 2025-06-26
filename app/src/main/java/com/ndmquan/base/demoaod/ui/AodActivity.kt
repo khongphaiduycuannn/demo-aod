@@ -1,4 +1,4 @@
-package com.ndmquan.base.demoaod
+package com.ndmquan.base.demoaod.ui
 
 import android.app.KeyguardManager
 import android.content.Context
@@ -13,8 +13,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
-import com.ndmquan.base.demoaod.clock.BaseClockFragment
 import com.ndmquan.base.demoaod.databinding.ActivityAodBinding
+import com.ndmquan.base.demoaod.ui.clock.SampleImageClockFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ class AodActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAodBinding.inflate(layoutInflater) }
 
-    private val clockFragment by lazy { BaseClockFragment() }
+    private val clockFragment by lazy { SampleImageClockFragment() }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

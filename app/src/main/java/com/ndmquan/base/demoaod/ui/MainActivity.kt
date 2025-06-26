@@ -1,4 +1,4 @@
-package com.ndmquan.base.demoaod
+package com.ndmquan.base.demoaod.ui
 
 import android.app.ActivityManager
 import android.content.Context
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.ndmquan.base.demoaod.AodService
 import com.ndmquan.base.demoaod.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
