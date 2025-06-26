@@ -3,6 +3,7 @@ package com.ndmquan.base.demoaod.ui.clock
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -110,6 +111,11 @@ open class BaseClockFragment : Fragment() {
         rvNotifications?.adapter = notificationsAdapter
 
         setupGestureDetection()
+    }
+
+    override fun onDestroy() {
+        Log.d("thuongngok", "clock fragment destroyed")
+        super.onDestroy()
     }
 
 

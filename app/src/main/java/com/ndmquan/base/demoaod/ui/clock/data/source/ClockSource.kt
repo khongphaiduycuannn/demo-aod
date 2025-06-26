@@ -6,12 +6,11 @@ import com.ndmquan.base.demoaod.ui.clock.data.ImageCharacter
 
 object ClockSource {
 
-    val BaseClock by lazy {
-        BaseClockFragment.newInstance()
-    }
+    val BaseClock
+        get() = BaseClockFragment.newInstance()
 
-    val ThreeDimensClock by lazy {
-        BaseClockFragment.newInstance(
+    val ThreeDimensClock
+        get() = BaseClockFragment.newInstance(
             layoutId = R.layout.layout_clock_3d,
             charList = listOf(
                 ImageCharacter(R.drawable.ic_view_clock_3d_0),
@@ -26,5 +25,4 @@ object ClockSource {
                 ImageCharacter(R.drawable.ic_view_clock_3d_9)
             )
         )
-    }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.ndmquan.base.demoaod.AodService
 import com.ndmquan.base.demoaod.databinding.ActivityMainBinding
 
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        Glide.with(this).load("file:///android_asset/aod/thumb_aod_3d.webp").into(binding.imageView)
 
         binding.textView.setOnClickListener {
             startService(this, AodService::class.java)
