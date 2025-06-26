@@ -1,9 +1,10 @@
-package com.ndmquan.base.demoaod.ui.clock.data
+package com.ndmquan.base.demoaod.ui.clock.data.source
 
 import com.ndmquan.base.demoaod.R
 import com.ndmquan.base.demoaod.ui.clock.BaseClockFragment
+import com.ndmquan.base.demoaod.ui.clock.data.ImageCharacter
 
-object ClockData {
+object ClockSource {
 
     val BaseClock by lazy {
         BaseClockFragment.newInstance()

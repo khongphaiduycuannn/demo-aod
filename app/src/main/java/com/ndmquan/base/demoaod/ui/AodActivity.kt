@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.ndmquan.base.demoaod.databinding.ActivityAodBinding
-import com.ndmquan.base.demoaod.ui.clock.data.ClockData
+import com.ndmquan.base.demoaod.ui.clock.data.source.ClockSource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ class AodActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAodBinding.inflate(layoutInflater) }
 
-    private val clockFragment by lazy { ClockData.ThreeDimensClock }
+    private val clockFragment by lazy { ClockSource.ThreeDimensClock }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
