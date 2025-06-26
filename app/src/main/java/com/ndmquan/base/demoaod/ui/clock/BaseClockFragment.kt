@@ -113,11 +113,6 @@ open class BaseClockFragment : Fragment() {
         setupGestureDetection()
     }
 
-    override fun onDestroy() {
-        Log.d("thuongngok", "clock fragment destroyed")
-        super.onDestroy()
-    }
-
 
     fun notifyDateTimeChanged(timeInMillis: Long) {
         onDateTimeChanged(timeInMillis)
