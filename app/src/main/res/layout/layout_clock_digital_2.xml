@@ -18,6 +18,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_minus25sdp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
@@ -27,7 +28,7 @@
             android:id="@+id/tvDayWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/utm_akashi"
+            android:fontFamily="@font/utm_alba_matter"
             android:includeFontPadding="false"
             android:textColor="#ffffff"
             android:textSize="@dimen/_12sdp"
@@ -38,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
-            android:fontFamily="@font/utm_akashi"
+            android:fontFamily="@font/utm_alba_matter"
             android:includeFontPadding="false"
             android:textColor="#ffffff"
             android:textSize="@dimen/_12sdp"
@@ -50,75 +51,73 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/tvBattery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15">
+        app:layout_constraintVertical_bias="0.2">
 
-        <TextView
-            android:id="@+id/tvHourFirstChar"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvHourFirstChar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:fontFamily="@font/utm_alba_matter"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_55sdp"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/tvHourSecondChar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_1sdp"
+                android:contentDescription="@null"
+                android:fontFamily="@font/utm_alba_matter"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_55sdp"
+                tools:text="4" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:fontFamily="@font/utm_akashi"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_34sdp"
-            tools:text="1" />
+            android:layout_marginTop="@dimen/_minus52sdp">
 
-        <TextView
-            android:id="@+id/tvHourSecondChar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_1sdp"
-            android:contentDescription="@null"
-            android:fontFamily="@font/utm_akashi"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_34sdp"
-            tools:text="4" />
+            <TextView
+                android:id="@+id/tvMinuteFirstChar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:fontFamily="@font/utm_alba_matter"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_55sdp"
+                tools:text="4" />
 
-        <TextView
-            android:id="@+id/tvColon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_1sdp"
-            android:contentDescription="@null"
-            android:fontFamily="@font/utm_akashi"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:text=":"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_34sdp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/tvMinuteFirstChar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:fontFamily="@font/utm_akashi"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_34sdp"
-            tools:text="4" />
-
-        <TextView
-            android:id="@+id/tvMinuteSecondChar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_1sdp"
-            android:contentDescription="@null"
-            android:fontFamily="@font/utm_akashi"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_34sdp"
-            tools:text="8" />
+            <TextView
+                android:id="@+id/tvMinuteSecondChar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_1sdp"
+                android:contentDescription="@null"
+                android:fontFamily="@font/utm_alba_matter"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_55sdp"
+                tools:text="8" />
+        </LinearLayout>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -126,11 +125,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/_18sdp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_55sdp"
         android:layout_marginBottom="@dimen/_25sdp"
         app:layout_constraintBottom_toTopOf="@id/tvBattery"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:layout_editor_absoluteX="23dp"
         tools:listitem="@layout/item_notification" />
 
     <TextView

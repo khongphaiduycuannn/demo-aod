@@ -14,7 +14,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.ndmquan.base.demoaod.databinding.ActivityAodBinding
-import com.ndmquan.base.demoaod.ui.clock.data.source.ClockSource
+import com.ndmquan.base.demoaod.ui.clock.BaseClockFragment
+import com.ndmquan.base.demoaod.ui.clock.data.source.AodSource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -23,13 +24,12 @@ class AodActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAodBinding.inflate(layoutInflater) }
 
-    private val clockFragment by lazy { ClockSource.BaseDigitalClock }
+    private var clockFragment: BaseClockFragment? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Setup fullscreen and hide navigation bar
         setupFullScreenMode()
 
         val showOnLockScreen = intent.getBooleanExtra("SHOW_ON_LOCK_SCREEN", false)
@@ -40,25 +40,40 @@ class AodActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
 
 
-        supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainerView.id, clockFragment)
-            .commit()
-
-
         lifecycleScope.launch {
             while (isActive) {
                 delay(1000)
-                clockFragment.notifyDateTimeChanged(System.currentTimeMillis())
+                clockFragment?.notifyDateTimeChanged(System.currentTimeMillis())
             }
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val keyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        val isLocked = keyguardManager.isKeyguardLocked
+
+        if (!isLocked && intent.getBooleanExtra("SHOW_ON_LOCK_SCREEN", false)) {
+            finish()
+        }
+
+
+        val prefs = getSharedPreferences("aod", Context.MODE_PRIVATE)
+        val layout = prefs.getInt("AOD_LAYOUT", 0)
+        clockFragment = AodSource.mapLayoutToClock(layout)
+        clockFragment?.let {
+            supportFragmentManager.beginTransaction()
+                .replace(binding.fragmentContainerView.id, it)
+                .commit()
+        }
+    }
+
+
     private fun setupFullScreenMode() {
-        // Make activity fullscreen and hide navigation bar
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            // For Android 11 and above
             window.setDecorFitsSystemWindows(false)
             try {
                 val controller = window.insetsController
@@ -67,11 +82,9 @@ class AodActivity : AppCompatActivity() {
                     controller.systemBarsBehavior =
                         WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
                 } else {
-                    // Fallback to older method if controller is null
                     useLegacyFullscreenMode()
                 }
             } catch (e: Exception) {
-                // Fallback in case of any exception
                 useLegacyFullscreenMode()
             }
         } else {
@@ -80,7 +93,6 @@ class AodActivity : AppCompatActivity() {
     }
 
     private fun useLegacyFullscreenMode() {
-        // Use WindowInsetsControllerCompat for better compatibility
         try {
             WindowCompat.setDecorFitsSystemWindows(window, false)
             val controller = WindowInsetsControllerCompat(window, window.decorView)
@@ -88,7 +100,6 @@ class AodActivity : AppCompatActivity() {
             controller.systemBarsBehavior =
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         } catch (e: Exception) {
-            // Final fallback using deprecated but reliable method
             window.decorView.systemUiVisibility = (
                     View.SYSTEM_UI_FLAG_FULLSCREEN or
                             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
@@ -120,17 +131,6 @@ class AodActivity : AppCompatActivity() {
         val layoutParams = window.attributes
         layoutParams.screenBrightness = 0.1f
         window.attributes = layoutParams
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        val keyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
-        val isLocked = keyguardManager.isKeyguardLocked
-
-        if (!isLocked && intent.getBooleanExtra("SHOW_ON_LOCK_SCREEN", false)) {
-            finish()
-        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
