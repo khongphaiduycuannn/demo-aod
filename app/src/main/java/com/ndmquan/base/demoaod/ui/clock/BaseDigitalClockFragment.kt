@@ -11,24 +11,24 @@ import com.ndmquan.base.demoaod.ui.clock.utils.tryToFindViewById
 
 open class BaseDigitalClockFragment : BaseClockFragment() {
 
-    protected val tvHourFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvHourFirstChar) }
-    protected val tvHourSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvHourSecondChar) }
-    protected val tvMinuteFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvMinuteFirstChar) }
-    protected val tvMinuteSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvMinuteSecondChar) }
-    protected val tvSecondFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvSecondFirstChar) }
-    protected val tvSecondSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvSecondSecondChar) }
+    val tvHourFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvHourFirstChar) }
+    val tvHourSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvHourSecondChar) }
+    val tvMinuteFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvMinuteFirstChar) }
+    val tvMinuteSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvMinuteSecondChar) }
+    val tvSecondFirstChar by lazy { tryToFindViewById<TextView>(R.id.tvSecondFirstChar) }
+    val tvSecondSecondChar by lazy { tryToFindViewById<TextView>(R.id.tvSecondSecondChar) }
 
-    protected val ivHourFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivHourFirstChar) }
-    protected val ivHourSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivHourSecondChar) }
-    protected val ivMinuteFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivMinuteFirstChar) }
-    protected val ivMinuteSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivMinuteSecondChar) }
-    protected val ivSecondFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivSecondFirstChar) }
-    protected val ivSecondSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivSecondSecondChar) }
+    val ivHourFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivHourFirstChar) }
+    val ivHourSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivHourSecondChar) }
+    val ivMinuteFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivMinuteFirstChar) }
+    val ivMinuteSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivMinuteSecondChar) }
+    val ivSecondFirstChar by lazy { tryToFindViewById<ImageView>(R.id.ivSecondFirstChar) }
+    val ivSecondSecondChar by lazy { tryToFindViewById<ImageView>(R.id.ivSecondSecondChar) }
 
 
     override var layoutId: Int = R.layout.layout_clock_base_digital
 
-    protected open val charList = mutableListOf<Character>().apply {
+    open val charList = mutableListOf<Character>().apply {
         addAll(DEFAULT_CHAR_LIST)
     }
 
@@ -84,7 +84,7 @@ open class BaseDigitalClockFragment : BaseClockFragment() {
         )
     }
 
-    protected open fun setHourMinuteView(
+    open fun setHourMinuteView(
         hourFirst: Character,
         hourSecond: Character,
         minuteFirst: Character,

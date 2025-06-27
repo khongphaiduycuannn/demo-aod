@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ndmquan.base.demoaod.ui.clock.view.ScalableClockLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.clock.BaseAnalogClockFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/ivBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#000000"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvDayWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_12sdp"
+            tools:text="Thứ 4," />
+
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:includeFontPadding="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_12sdp"
+            tools:text="25 Tháng 6" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vCenterPoint"
+        android:layout_width="0.1dp"
+        android:layout_height="0.1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <ImageView
+        android:id="@+id/ivHourHand"
+        android:layout_width="@dimen/_9sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="#ffffff"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@id/vCenterPoint"
+        app:layout_constraintEnd_toEndOf="@id/vCenterPoint"
+        app:layout_constraintStart_toStartOf="@id/vCenterPoint" />
+
+    <ImageView
+        android:id="@+id/ivMinuteHand"
+        android:layout_width="@dimen/_5sdp"
+        android:layout_height="@dimen/_65sdp"
+        android:background="#ffffff"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@id/vCenterPoint"
+        app:layout_constraintEnd_toEndOf="@id/vCenterPoint"
+        app:layout_constraintStart_toStartOf="@id/vCenterPoint" />
+
+    <ImageView
+        android:id="@+id/ivSecondHand"
+        android:layout_width="@dimen/_2sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:background="#ced4d8"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@id/vCenterPoint"
+        app:layout_constraintEnd_toEndOf="@id/vCenterPoint"
+        app:layout_constraintStart_toStartOf="@id/vCenterPoint" />
+</com.ndmquan.base.demoaod.ui.clock.view.ScalableClockLayout>

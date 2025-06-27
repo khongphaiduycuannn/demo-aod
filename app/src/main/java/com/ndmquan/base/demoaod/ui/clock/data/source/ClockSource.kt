@@ -1,6 +1,7 @@
 package com.ndmquan.base.demoaod.ui.clock.data.source
 
 import com.ndmquan.base.demoaod.R
+import com.ndmquan.base.demoaod.ui.clock.BaseAnalogClockFragment
 import com.ndmquan.base.demoaod.ui.clock.BaseDigitalClockFragment
 import com.ndmquan.base.demoaod.ui.clock.data.ImageCharacter
 
@@ -25,4 +26,8 @@ object ClockSource {
                 ImageCharacter(R.drawable.ic_view_clock_3d_9)
             )
         )
+
+
+    val BaseAnalogClock
+        get() = BaseAnalogClockFragment()
 }

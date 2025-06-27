@@ -88,17 +88,13 @@ abstract class BaseClockFragment : Fragment() {
     }
 
 
-    fun notifyDateTimeChanged(timeInMillis: Long) {
-        onDateTimeChanged(timeInMillis)
-    }
+    fun notifyDateTimeChanged(timeInMillis: Long) = onDateTimeChanged(timeInMillis)
 
-    fun notifyBatteryChanged(batteryPercent: Int) {
-        onBatteryChanged(batteryPercent)
-    }
+    fun notifyBatteryChanged(batteryPercent: Int) = onBatteryChanged(batteryPercent)
 
-    fun notifyNotificationChanged(notifications: List<Notification>) {
+    fun notifyNotificationChanged(notifications: List<Notification>) =
         notificationsAdapter.submitList(notifications)
-    }
+
 
     fun setDateTimeTextColor(color: Int) {
         tvDayWeek?.setTextColor(color)

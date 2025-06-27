@@ -33,8 +33,8 @@ class AodService : Service() {
                         val activityIntent =
                             Intent(this@AodService, AodActivity::class.java).apply {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or
-                                        Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                                        Intent.FLAG_ACTIVITY_SINGLE_TOP or
+                                        Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or
                                         Intent.FLAG_ACTIVITY_SINGLE_TOP or
                                         Intent.FLAG_ACTIVITY_NO_ANIMATION
                                 putExtra("SHOW_ON_LOCK_SCREEN", true)
