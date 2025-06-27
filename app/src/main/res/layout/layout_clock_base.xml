@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.clock.BaseClockFragment">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/ivBackground"
@@ -14,149 +13,35 @@
         android:contentDescription="@null"
         android:scaleType="centerCrop" />
 
-
-    <TextView
-        android:id="@+id/tvHourFirstChar"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:includeFontPadding="false"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/_32sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/_26sdp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.10"
-        tools:text="0" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvHourSecondChar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_1sdp"
-        android:includeFontPadding="false"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/_32sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHourFirstChar"
-        app:layout_constraintStart_toEndOf="@+id/tvHourFirstChar"
-        app:layout_constraintTop_toTopOf="@+id/tvHourFirstChar"
-        tools:text="0" />
+        <TextView
+            android:id="@+id/tvDayWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_14sdp"
+            tools:text="Thứ 4," />
 
-    <TextView
-        android:id="@+id/tvColon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_2sdp"
-        android:includeFontPadding="false"
-        android:text=":"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/_32sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHourSecondChar"
-        app:layout_constraintStart_toEndOf="@id/tvHourSecondChar"
-        app:layout_constraintTop_toTopOf="@+id/tvHourSecondChar"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/tvMinuteFirstChar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_2sdp"
-        android:includeFontPadding="false"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/_32sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHourFirstChar"
-        app:layout_constraintStart_toEndOf="@+id/tvColon"
-        app:layout_constraintTop_toTopOf="@+id/tvHourFirstChar"
-        tools:text="0" />
-
-    <TextView
-        android:id="@+id/tvMinuteSecondChar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_1sdp"
-        android:includeFontPadding="false"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/_32sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHourFirstChar"
-        app:layout_constraintStart_toEndOf="@+id/tvMinuteFirstChar"
-        app:layout_constraintTop_toTopOf="@+id/tvHourFirstChar"
-        tools:text="0" />
-
-    <TextView
-        android:id="@+id/tvDayWeek"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_3sdp"
-        android:includeFontPadding="false"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/_14sdp"
-        app:layout_constraintStart_toStartOf="@+id/tvHourFirstChar"
-        app:layout_constraintTop_toBottomOf="@+id/tvHourFirstChar"
-        tools:text="Thứ 4," />
-
-    <TextView
-        android:id="@+id/tvDateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:includeFontPadding="false"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/_14sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDayWeek"
-        app:layout_constraintStart_toEndOf="@+id/tvDayWeek"
-        app:layout_constraintTop_toTopOf="@+id/tvDayWeek"
-        tools:text="25 Tháng 6" />
-
-
-    <ImageView
-        android:id="@+id/ivHourFirstChar"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        tools:src="@drawable/ic_view_clock_3d_0" />
-
-    <ImageView
-        android:id="@+id/ivHourSecondChar"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_2sdp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/ivHourFirstChar"
-        app:layout_constraintStart_toEndOf="@+id/ivHourFirstChar"
-        app:layout_constraintTop_toTopOf="@+id/ivHourFirstChar"
-        tools:src="@drawable/ic_view_clock_3d_2" />
-
-    <ImageView
-        android:id="@+id/ivMinuteFirstChar"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@null"
-        app:layout_constraintStart_toStartOf="@+id/ivHourFirstChar"
-        app:layout_constraintTop_toBottomOf="@+id/ivHourFirstChar"
-        tools:src="@drawable/ic_view_clock_3d_2" />
-
-    <ImageView
-        android:id="@+id/ivMinuteSecondChar"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/ivMinuteFirstChar"
-        app:layout_constraintStart_toStartOf="@+id/ivHourSecondChar"
-        app:layout_constraintTop_toTopOf="@+id/ivMinuteFirstChar"
-        tools:src="@drawable/ic_view_clock_3d_8" />
-
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:includeFontPadding="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_14sdp"
+            tools:text="25 Tháng 6" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotifications"
@@ -165,9 +50,10 @@
         android:layout_marginHorizontal="@dimen/_18sdp"
         android:layout_marginVertical="@dimen/_20sdp"
         app:layout_constraintBottom_toTopOf="@+id/tvBattery"
-        app:layout_constraintTop_toBottomOf="@+id/ivMinuteSecondChar"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:itemCount="1"
+        tools:layout_editor_absoluteX="23dp"
         tools:listitem="@layout/item_notification" />
-
 
     <TextView
         android:id="@+id/tvBattery"

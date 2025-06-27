@@ -1,17 +1,17 @@
 package com.ndmquan.base.demoaod.ui.clock.data.source
 
 import com.ndmquan.base.demoaod.R
-import com.ndmquan.base.demoaod.ui.clock.BaseClockFragment
+import com.ndmquan.base.demoaod.ui.clock.BaseDigitalClockFragment
 import com.ndmquan.base.demoaod.ui.clock.data.ImageCharacter
 
 object ClockSource {
 
-    val BaseClock
-        get() = BaseClockFragment.newInstance()
+    val BaseDigitalClock
+        get() = BaseDigitalClockFragment.newInstance()
 
     val ThreeDimensClock
-        get() = BaseClockFragment.newInstance(
-            layoutId = R.layout.layout_clock_3d,
+        get() = BaseDigitalClockFragment.newInstance(
+            layoutId = R.layout.layout_clock_digital_1,
             charList = listOf(
                 ImageCharacter(R.drawable.ic_view_clock_3d_0),
                 ImageCharacter(R.drawable.ic_view_clock_3d_1),

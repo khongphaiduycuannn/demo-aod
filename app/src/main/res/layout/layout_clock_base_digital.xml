@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ndmquan.base.demoaod.ui.clock.view.ScalableClockLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.clock.BaseDigitalClockFragment">
+
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop" />
+
+
+    <TextView
+        android:id="@+id/tvHourFirstChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.10"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/tvHourSecondChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_1sdp"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHourFirstChar"
+        app:layout_constraintStart_toEndOf="@+id/tvHourFirstChar"
+        app:layout_constraintTop_toTopOf="@+id/tvHourFirstChar"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/tvColon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:includeFontPadding="false"
+        android:text=":"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHourSecondChar"
+        app:layout_constraintStart_toEndOf="@id/tvHourSecondChar"
+        app:layout_constraintTop_toTopOf="@+id/tvHourSecondChar"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tvMinuteFirstChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHourFirstChar"
+        app:layout_constraintStart_toEndOf="@+id/tvColon"
+        app:layout_constraintTop_toTopOf="@+id/tvHourFirstChar"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/tvMinuteSecondChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_1sdp"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHourFirstChar"
+        app:layout_constraintStart_toEndOf="@+id/tvMinuteFirstChar"
+        app:layout_constraintTop_toTopOf="@+id/tvHourFirstChar"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/tvSecondFirstChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMinuteSecondChar"
+        app:layout_constraintStart_toEndOf="@+id/tvMinuteSecondChar"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/tvSecondSecondChar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSecondFirstChar"
+        app:layout_constraintStart_toEndOf="@+id/tvSecondFirstChar"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/tvDayWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintStart_toStartOf="@+id/tvHourFirstChar"
+        app:layout_constraintTop_toBottomOf="@+id/tvHourFirstChar"
+        tools:text="Thứ 4," />
+
+    <TextView
+        android:id="@+id/tvDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDayWeek"
+        app:layout_constraintStart_toEndOf="@+id/tvDayWeek"
+        app:layout_constraintTop_toTopOf="@+id/tvDayWeek"
+        tools:text="25 Tháng 6" />
+
+
+    <ImageView
+        android:id="@+id/ivHourFirstChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        tools:src="@drawable/ic_view_clock_3d_0" />
+
+    <ImageView
+        android:id="@+id/ivHourSecondChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivHourFirstChar"
+        app:layout_constraintStart_toEndOf="@+id/ivHourFirstChar"
+        app:layout_constraintTop_toTopOf="@+id/ivHourFirstChar"
+        tools:src="@drawable/ic_view_clock_3d_2" />
+
+    <ImageView
+        android:id="@+id/ivMinuteFirstChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="@+id/ivHourFirstChar"
+        app:layout_constraintTop_toBottomOf="@+id/ivHourFirstChar"
+        tools:src="@drawable/ic_view_clock_3d_2" />
+
+    <ImageView
+        android:id="@+id/ivMinuteSecondChar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMinuteFirstChar"
+        app:layout_constraintStart_toStartOf="@+id/ivHourSecondChar"
+        app:layout_constraintTop_toTopOf="@+id/ivMinuteFirstChar"
+        tools:src="@drawable/ic_view_clock_3d_8" />
+
+    <ImageView
+        android:id="@+id/ivSecondFirstChar"
+        android:layout_width="@dimen/_13sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMinuteSecondChar"
+        app:layout_constraintStart_toEndOf="@+id/ivMinuteSecondChar"
+        tools:src="@drawable/ic_view_clock_3d_8" />
+
+    <ImageView
+        android:id="@+id/ivSecondSecondChar"
+        android:layout_width="@dimen/_13sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_1sdp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/ivSecondFirstChar"
+        app:layout_constraintStart_toEndOf="@+id/ivSecondFirstChar"
+        tools:src="@drawable/ic_view_clock_3d_8" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_18sdp"
+        android:layout_marginVertical="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@+id/tvBattery"
+        app:layout_constraintTop_toBottomOf="@+id/ivMinuteSecondChar"
+        tools:listitem="@layout/item_notification" />
+
+
+    <TextView
+        android:id="@+id/tvBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="41%" />
+</com.ndmquan.base.demoaod.ui.clock.view.ScalableClockLayout>

@@ -23,7 +23,7 @@ class AodActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAodBinding.inflate(layoutInflater) }
 
-    private val clockFragment by lazy { ClockSource.ThreeDimensClock }
+    private val clockFragment by lazy { ClockSource.BaseDigitalClock }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

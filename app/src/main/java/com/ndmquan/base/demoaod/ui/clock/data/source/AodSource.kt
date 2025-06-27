@@ -1,7 +1,7 @@
 package com.ndmquan.base.demoaod.ui.clock.data.source
 
 import android.graphics.Color
-import com.ndmquan.base.demoaod.ui.clock.BaseClockFragment
+import com.ndmquan.base.demoaod.ui.clock.BaseDigitalClockFragment
 import com.ndmquan.base.demoaod.ui.clock.data.AodTheme
 import com.ndmquan.base.demoaod.ui.clock.data.AodType
 
@@ -19,10 +19,10 @@ object AodSource {
     )
 
 
-    fun mapClockToLayout(layout: Int): BaseClockFragment {
+    fun mapClockToLayout(layout: Int): BaseDigitalClockFragment {
         return when (layout) {
             1 -> ClockSource.ThreeDimensClock
-            else -> ClockSource.BaseClock
+            else -> ClockSource.BaseDigitalClock
         }
     }
 }
