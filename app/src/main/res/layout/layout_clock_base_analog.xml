@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.clock.BaseAnalogClockFragment">
+    tools:context=".ui.clock.base.BaseAnalogClockFragment">
 
     <ImageView
         android:id="@+id/ivBackground"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.clock.BaseDigitalClockFragment">
+    tools:context=".ui.clock.base.BaseDigitalClockFragment">
 
     <ImageView
         android:id="@+id/ivBackground"
@@ -116,7 +116,7 @@
                 android:includeFontPadding="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_55sdp"
-                tools:text="8" />
+                tools:text="0" />
         </LinearLayout>
     </LinearLayout>
 

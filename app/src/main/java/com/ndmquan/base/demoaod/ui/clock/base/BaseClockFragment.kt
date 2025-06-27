@@ -1,4 +1,4 @@
-package com.ndmquan.base.demoaod.ui.clock
+package com.ndmquan.base.demoaod.ui.clock.base
 
 import android.annotation.SuppressLint
 import android.graphics.Color

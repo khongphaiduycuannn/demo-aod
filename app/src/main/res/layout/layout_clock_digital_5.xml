@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ndmquan.base.demoaod.ui.clock.view.ScalableClockLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.clock.base.BaseDigitalClockFragment">
+
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_7sdp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/tvDayWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_pro"
+            android:includeFontPadding="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="bold"
+            tools:text="Thứ 4," />
+
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/be_vietnam_pro"
+            android:includeFontPadding="false"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="bold"
+            tools:text="25 Tháng 6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/tvBattery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivHourFirstChar"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_0"
+                tools:text="1" />
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivHourSecondChar"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_0"
+                tools:text="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp">
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivMinuteFirstChar"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_0"
+                tools:text="1" />
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivMinuteSecondChar"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_0"
+                tools:text="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="-1dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/tvBattery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivHourFirstCharTemp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_0"
+                tools:text="1" />
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivHourSecondCharTemp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_0"
+                tools:text="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp">
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivMinuteFirstCharTemp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_0"
+                tools:text="1" />
+
+            <com.ndmquan.base.demoaod.ui.clock.view.FoldImageView
+                android:id="@+id/ivMinuteSecondCharTemp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_flip_clock_1"
+                tools:text="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_55sdp"
+        android:layout_marginBottom="@dimen/_25sdp"
+        app:layout_constraintBottom_toTopOf="@id/tvBattery"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:listitem="@layout/item_notification" />
+
+    <TextView
+        android:id="@+id/tvBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="41%" />
+</com.ndmquan.base.demoaod.ui.clock.view.ScalableClockLayout>

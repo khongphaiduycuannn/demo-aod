@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.ndmquan.base.demoaod.databinding.ActivityAodBinding
-import com.ndmquan.base.demoaod.ui.clock.BaseClockFragment
+import com.ndmquan.base.demoaod.ui.clock.base.BaseClockFragment
 import com.ndmquan.base.demoaod.ui.clock.data.source.AodSource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive

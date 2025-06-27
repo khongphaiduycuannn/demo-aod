@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
         android:textColor="#000000"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_11sdp"
         android:textStyle="bold"
         tools:text="Notification title" />
 
@@ -29,6 +29,6 @@
         android:includeFontPadding="false"
         android:lineSpacingExtra="@dimen/_2sdp"
         android:textColor="#000000"
-        android:textSize="@dimen/_11sdp"
+        android:textSize="@dimen/_10sdp"
         tools:text="Notification content" />
 </LinearLayout>

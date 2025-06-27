@@ -1,7 +1,7 @@
 package com.ndmquan.base.demoaod.ui.clock.data.source
 
 import android.graphics.Color
-import com.ndmquan.base.demoaod.ui.clock.BaseDigitalClockFragment
+import com.ndmquan.base.demoaod.ui.clock.base.BaseDigitalClockFragment
 import com.ndmquan.base.demoaod.ui.clock.data.AodTheme
 import com.ndmquan.base.demoaod.ui.clock.data.AodType
 

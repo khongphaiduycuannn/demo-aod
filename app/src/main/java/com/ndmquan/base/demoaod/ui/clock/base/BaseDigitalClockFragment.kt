@@ -1,4 +1,4 @@
-package com.ndmquan.base.demoaod.ui.clock
+package com.ndmquan.base.demoaod.ui.clock.base
 
 import android.os.Bundle
 import android.widget.ImageView
